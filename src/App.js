@@ -1,25 +1,44 @@
-import logo from './logo.svg';
+import React from 'react';
+import { useEffect, useState } from 'react';
+import Card from './Card';
+import {authURL} from './secret/secret'
 import './App.css';
 
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const auth =
+		`Bearer ${authURL}`;
+
+	const [albums, setAlbums] = useState([]);
+
+	useEffect(async => {
+		getData()
+			.then(data =>
+				data.albums.items.forEach(item => setAlbums(added => [...added, item]))
+			) //for each album then take the ones added already and add the new item to the array.
+			.catch(error => console.log(error));
+	}, []);
+
+	async function getData() {
+		const response = await fetch(
+			'https://api.spotify.com/v1/browse/new-releases',
+			{
+				method: 'GET',
+				headers: {
+					Authorization: auth
+				},
+				'Content-Type': 'application/json'
+			}
+		);
+		const data = await response.json();
+		return data;
+	}
+
+	return (
+		<main>
+			<Card albums={albums} />
+		</main>
+	);
 }
 
 export default App;
