@@ -3,9 +3,7 @@ import PlayButton from './PlayButton';
 import './App.css'
 
 function Card(props){
-
     
-
   return(
       <div className='grid'>
       

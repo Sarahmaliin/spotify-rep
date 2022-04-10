@@ -6,7 +6,7 @@ const PlayButton = ({ index }) => {
 
   const [colorTxt, setColorTxt ] = useState('')
   const styles = {
-    "text-align": "center",
+    textAlign: "center",
     padding: ".5em 1.5em",
     color: colorTxt
   };

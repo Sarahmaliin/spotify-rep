@@ -1,11 +1,13 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import Card from './Card';
+import {authURL} from './secret/secret'
 import './App.css';
+
 
 function App() {
   const auth =
-		'Bearer BQAS7kt4Z72N89pvoUEp2iKLY3cbmNCGnBPAeZfQbPiQTHsQpBi84oHK54-FjfwsGevZbmGv-0y-I6toNDyXNjLBqu9PexbGNpea5mlLKZ5tM2gLlccCw9v_gB5gN6apUFLMFMnc9iZnk5qZ';
+		`Bearer ${authURL}`;
 
 	const [albums, setAlbums] = useState([]);
 
