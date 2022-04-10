@@ -1,13 +1,14 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import Card from './Card';
 import {authURL} from './secret/secret'
+import Card from './Card';
 import './App.css';
 
 
 function App() {
   const auth =
 		`Bearer ${authURL}`;
+
 
 	const [albums, setAlbums] = useState([]);
 
@@ -28,7 +29,7 @@ function App() {
 					Authorization: auth
 				},
 				'Content-Type': 'application/json'
-			}
+			} 
 		);
 		const data = await response.json();
 		return data;
