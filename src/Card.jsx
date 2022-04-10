@@ -1,7 +1,11 @@
 import React from 'react'
-import 'App.css'
+import PlayButton from './PlayButton';
+import './App.css'
 
 function Card(props){
+
+    
+
   return(
       <div className='grid'>
       
@@ -12,6 +16,7 @@ function Card(props){
           <section className='text-box'>
         <p>{album.name}</p>
         <p>{album.artists[0].name}</p>
+            < PlayButton index={i} />
           </section>
         </section>
       </div>
